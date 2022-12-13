@@ -11,11 +11,13 @@ class Title
 {
 private:
   Text text;
+  Font font;
   bool toRight = true;
   bool toBottom = true;
+  int velocity = 5;
 
 public:
-  // Title();
+  Title();
   void init();
   void draw(RenderWindow &window);
   void setText(string text);

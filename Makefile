@@ -10,7 +10,8 @@ OBJECTS_1=$(SOURCES:.cpp=.o)
 OBJECTS_2=$(OBJECTS_1:sources/*.o=*.o)
 OBJECTS=$(OBJECTS_2:main.o=)
 
-all: init clean compile link run
+all: init compile link run
+# all: init clean compile link run
 # all: init clean compile link clean_objects run
 
 init:
@@ -20,31 +21,24 @@ init:
 	@echo "objects_1 ->" $(OBJECTS_1)
 	@echo "objects_2 ->" $(OBJECTS_2)
 	@echo "objects   ->" $(OBJECTS)
-	@echo "done!"
 	@echo -e
 
 compile:
-	@echo "Compiling..."
 	$(CC) -c $(SOURCES) -I "$(SFML_DIR)\include" 
-	@echo "done!"
+	@echo "Compiling..."
 	@echo -e
 
 link:
-	@echo "Linking..."
 	$(CC) $(OBJECTS) -o main -L "$(SFML_DIR)\lib" $(LIB_FLAGS)
-	@echo "done!"
+	@echo "Linking..."
 	@echo -e
 
-clean:
-	@echo "Removing main executable..."
+clear:
 	rm -f main
-	@echo "done!"
+	@echo "Removing main executable..."
 	@echo -e
-
-clean_objects: 
 	@echo "Cleaning objects..."
 	rm -f *.o
-	@echo "done!"
 	@echo -e
 
 run: 

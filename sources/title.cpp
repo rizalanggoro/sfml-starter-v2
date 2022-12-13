@@ -2,46 +2,42 @@
 
 void Title::init()
 {
+  this->font.loadFromFile("assets/fonts/Poppins-Regular.ttf");
 }
 
-// Title::Title()
-// {
-//   this->init();
-// }
+Title::Title()
+{
+  this->init();
+}
 
 void Title::draw(RenderWindow &window)
 {
-  Font font{};
-  font.loadFromFile("assets/fonts/Poppins-Regular.ttf");
-
-  this->text.setFont(font);
+  this->text.setFont(this->font);
   this->text.setCharacterSize(32);
   this->text.setFillColor(Color::Red);
 
-  // this->text.setPosition(Vector2f(100, 0));
-  double speed = 5;
   if (this->toRight)
   {
-    this->text.move(Vector2f(speed, 0));
+    this->text.move(Vector2f(this->velocity, 0));
     if (this->text.getPosition().x >= window.getSize().x - this->text.getGlobalBounds().width)
       this->toRight = false;
   }
   else
   {
-    this->text.move(Vector2f(-1 * speed, 0));
+    this->text.move(Vector2f(-1 * this->velocity, 0));
     if (this->text.getPosition().x <= 0)
       this->toRight = true;
   }
 
   if (this->toBottom)
   {
-    this->text.move(Vector2f(0, speed));
+    this->text.move(Vector2f(0, this->velocity));
     if (this->text.getPosition().y >= window.getSize().y - this->text.getGlobalBounds().height)
       this->toBottom = false;
   }
   else
   {
-    this->text.move(Vector2f(0, -1 * speed));
+    this->text.move(Vector2f(0, -1 * this->velocity));
     if (this->text.getPosition().y <= 0)
       this->toBottom = true;
   }

@@ -1,4 +1,14 @@
-## Persiapan
+## Persiapan MinGW
+
+- Install MinGW Builds 7.3.0 (64-bit) melalui link [berikut.](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/7.3.0/threads-posix/seh/x86_64-7.3.0-release-posix-seh-rt_v5-rev0.7z/download) (Selain versi 7.3.0 tidak work).
+- Ekstrak file `.7z` menggunakan winrar atau sejenisnya, kemudian pindahkan ke folder `C:/` atau lainnya.
+- Tambahkan `path_ke_folder_mingw-7.3.0/bin` ke `Environment Variables` pada bagian `Path`.
+
+  Contoh : `D:\application\mingw64\bin`
+
+- Untuk bisa mengeksekusi file `Makefile`, lakukan rename pada file `path_ke_folder_mingw-7.3.0/bin/mingw32-make.exe` diubah menjadi `make.exe`.
+
+## Persiapan VSCode
 
 - Tambahkan `path_ke_folder_sfml/include` ke `.vscode/c_cpp_properties.json` pada bagian `includePath`.
 
@@ -10,22 +20,35 @@
   ]
   ```
 
-- Install MinGW Builds 7.3.0 (64-bit) melalui link [berikut.](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/7.3.0/threads-posix/seh/x86_64-7.3.0-release-posix-seh-rt_v5-rev0.7z/download) (Selain versi 7.3.0 tidak work).
-- Ekstrak file `.7z` menggunakan winrar atau sejenisnya, kemudian pindahkan ke folder `C:/` atau lainnya.
-- Tambahkan `path_ke_folder_mingw-7.3.0/bin` ke `Environment Variables` pada bagian `Path`.
-
-  Contoh : `D:\application\mingw64\bin`
-
-- Buka file `Makefile`, ubah `D:\sdk\SFML-gcc` pada bagian `compile` dan `link` sesuai dengan folder instalasi mingw.
-- Untuk bisa mengeksekusi file `Makefile`, lakukan rename pada file `path_ke_folder_mingw-7.3.0/bin/mingw32-make.exe` diubah menjadi `make.exe`.
+- Buka file `Makefile`, ubah `SFML_DIR` sesuai dengan folder instalasi SFML.
+- Ubah `CLEAR_TERMINAL` sesuai dengan profile terminal yang digunakan, (`cls` atau `clear`)
 
 ## Cara menjalankan program
 
-- Untuk mengcompile file `main.cpp` menjadi file `main.o`, buka terminal lalu ketik perintah `make compile`. Maka akan dibuat file baru bernama `main.o`.
-- Untuk menghubungkan file `main.o` dengan library SFML, ketik perintah `make link`. Maka akan dibuat file baru bernama `main.exe`.
-- Untuk menjalankan file `main.exe` bisa menggunakan File Explorer atau bisa menggunakan terminal dengan perintah `./main.exe` atau `.\main.exe` atau `make run`.
-- Untuk menghapus atau membersihkan file `main.exe`, `main.o`, jalankan perinttah `make clean`.
-- Untuk menjalankan semua perintah, mulai dari compile hingga run, cukup ketik perintah `make`.
+- Ketikkan perintah `make` pada terminal.
+
+## Struktur Folder
+
+- root
+  - assets
+    - Berisi asset game seperti font, gambar, suara dll.
+    - fonts
+      - `nama-font.ttf`
+      - `nama-font-2.ttf`
+    - images
+      - `gambar.png`
+      - `gambar-2.png`
+  - headers
+    - Berisi file-file header `*.hpp` yang kemudian bisa di include pada file `main.cpp` dll.
+    - `button.hpp`
+    - `background.hpp`
+  - sources
+    - Berisi file-file source `*.cpp` yang terdapat penjabaran berbagai fungsi dari header file.
+    - `button.cpp`
+    - `background.cpp`
+  - `main.cpp`
+  - `main.exe`
+  - `*.dll`
 
 ## Error
 

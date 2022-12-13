@@ -10,10 +10,10 @@ using namespace std;
 int main()
 {
   RenderWindow window(VideoMode(1280, 720), "SFML | Starter V2");
+  window.setFramerateLimit(60);
 
   Title title{};
-  // title.init();
-  title.setText("Starter V2");
+  title.setText("Starter V2!!");
 
   while (window.isOpen())
   {
