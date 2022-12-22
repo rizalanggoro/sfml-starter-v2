@@ -1,6 +1,6 @@
 # only change this lines
 SFML_DIR=D:\sdk\SFML-gcc
-CLEAR_TERMINAL=clear
+CLEAR_TERMINAL=
 
 # ---------------------------------------------------- #
 CC=g++
